@@ -4,20 +4,15 @@ on:
   repository_dispatch:
     types: A
 
-#on: [workflow_dispatch]
-#  #push:
-#  #schedule:
-#  #  - cron:  '*/5 * * 5 *'
-
 jobs:
   sj:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: C A
         uses: actions/checkout@v2
         with:
           path: main
-      - name: Check Main
+      - name: C M A
         run: |
           cd ./main/
           ls ${GITHUB_WORKSPACE}
@@ -31,26 +26,24 @@ jobs:
           repository: dsjena/yq-a
           token: ${{ secrets.SUPER_SECRET }}
           path: yq-a
-      - name: Set up Python
+      - name: S A
         uses: actions/setup-python@v2
         with:
           python-version: '3.8'
-      - name: Install dependencies
+      - name: I D A
         run: |
           cd ./yq-a/
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Actual Calculation
+      - name: AC A
         run: |
           cd ./yq-a/
-          ls 
           dtt=`TZ=IST-5:30 date`
           echo ${GITHUB_WORKSPACE}
           echo "${dtt}" 
           echo "${dtt}" >> recieved.md
           bash make-rdme.sh >> log.txt 2>&1
-          echo "Running hour..."
-          #sh nse-minute-weekly-group.sh
+          sh nse-run.sh 
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
