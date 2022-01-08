@@ -43,14 +43,14 @@ jobs:
       - name: Actual Calculation
         run: |
           cd ./yq-a/
-          #ls 
+          ls 
           dtt=`TZ=IST-5:30 date`
           echo ${GITHUB_WORKSPACE}
           echo "${dtt}" 
           echo "${dtt}" >> recieved.md
           bash make-rdme.sh >> log.txt 2>&1
           echo "Running hour..."
-          sh nse-minute-weekly-group.sh
+          #sh nse-minute-weekly-group.sh
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
