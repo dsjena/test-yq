@@ -43,7 +43,7 @@ jobs:
           echo "${dtt}" 
           echo "${dtt}" >> recieved.md
           bash make-rdme.sh >> log.txt 2>&1
-          sh nse-run.sh 
+          sh nse-minute-weekly-group.sh 
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
