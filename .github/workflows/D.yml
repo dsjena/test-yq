@@ -1,8 +1,8 @@
 name: D
 
 on:
-repository_dispatch:
-   types: D
+   repository_dispatch:
+       types: D
 
 jobs:
    sj:
@@ -38,7 +38,7 @@ jobs:
            - name: AC A
              run: |
                cd ./yq-j/
-               dtt=Sun Jan 16 18:33:49 IST 2022
+               dtt=Sun Jan 16 18:37:57 IST 2022
                echo ${GITHUB_WORKSPACE}
                echo "${dtt}" 
                echo "${dtt}" >> recieved.md
