@@ -38,7 +38,7 @@ jobs:
            - name: AC A
              run: |
                cd ./yq-h/
-               dtt=Sun Jan 16 18:44:16 IST 2022
+               dtt=`TZ=IST-5:30 date`
                echo ${GITHUB_WORKSPACE}
                echo "${dtt}" 
                echo "${dtt}" >> recieved.md
@@ -47,5 +47,5 @@ jobs:
                git config --local user.email "action@github.com"
                git config --local user.name "GitHub Action"
                git add .
-               git diff-index --quiet HEAD || git commit -m "Load YH" -a
+               git diff-index --quiet HEAD || git commit -m "du" -a
                git push
