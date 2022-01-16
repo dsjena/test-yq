@@ -1,51 +1,51 @@
 name: B
 
-on: 
-  repository_dispatch:
-    types: B
+on:
+repository_dispatch:
+    types: {i}
 
 jobs:
-  sj:
+sj:
     runs-on: ubuntu-latest
     steps:
-      - name: C B
+    - name: C A
         uses: actions/checkout@v2
         with:
-          path: main
-      - name: C M B
+        path: main
+    - name: C M A
         run: |
-          cd ./main/
-          ls ${GITHUB_WORKSPACE}
-          echo ${GITHUB_WORKSPACE}
-          pwd
-          echo "main is done..."
-          
-      - name: yq-b
+        cd ./main/
+        ls ${GITHUB_WORKSPACE}
+        echo ${GITHUB_WORKSPACE}
+        pwd
+        echo "main is done..."
+
+    - name: yq-b
         uses: actions/checkout@v2
         with:
-          repository: dsjena/yq-b
-          token: ${{ secrets.SUPER_SECRET }}
-          path: yq-b
-      - name: S B
+        repository: dsjena/yq-a
+        token: ${{ secrets.SUPER_SECRET }}
+        path: yq-b
+    - name: S A
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'
-      - name: I D B
+        python-version: '3.8'
+    - name: I D A
         run: |
-          cd ./yq-b/
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      - name: AC B
+        cd ./yq-b/
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: AC A
         run: |
-          cd ./yq-b/
-          dtt=`TZ=IST-5:30 date`
-          echo ${GITHUB_WORKSPACE}
-          echo "${dtt}" 
-          echo "${dtt}" >> recieved.md
-          bash make-rdme.sh >> log.txt 2>&1
-          sh bse-run.sh 
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git diff-index --quiet HEAD || git commit -m "Load YH" -a
-          git push
+        cd ./yq-b/
+        dtt=Sun Jan 16 18:07:21 IST 2022
+        echo ${GITHUB_WORKSPACE}
+        echo "${dtt}" 
+        echo "${dtt}" >> recieved.md
+        bash make-rdme.sh >> log.txt 2>&1
+        sh all-run-group.sh 
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git diff-index --quiet HEAD || git commit -m "Load YH" -a
+        git push
