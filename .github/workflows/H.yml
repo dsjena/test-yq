@@ -1,8 +1,8 @@
-name: B
+name: H
 
 on:
    repository_dispatch:
-       types: B
+       types: H
 
 jobs:
    sj:
@@ -20,25 +20,25 @@ jobs:
                pwd
                echo "main is done..."
 
-           - name: yq-b
+           - name: yq-h
              uses: actions/checkout@v2
              with:
                repository: dsjena/yq-a
                token: ${{ secrets.SUPER_SECRET }}
-               path: yq-b
+               path: yq-h
            - name: S A
              uses: actions/setup-python@v2
              with:
                python-version: '3.8'
            - name: I D A
              run: |
-               cd ./yq-b/
+               cd ./yq-h/
                python -m pip install --upgrade pip
                pip install -r requirements.txt
            - name: AC A
              run: |
-               cd ./yq-b/
-               dtt=Sun Jan 16 18:44:15 IST 2022
+               cd ./yq-h/
+               dtt=Sun Jan 16 18:44:16 IST 2022
                echo ${GITHUB_WORKSPACE}
                echo "${dtt}" 
                echo "${dtt}" >> recieved.md
