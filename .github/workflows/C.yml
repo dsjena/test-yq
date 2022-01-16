@@ -23,7 +23,7 @@ jobs:
            - name: yq-c
              uses: actions/checkout@v2
              with:
-               repository: dsjena/yq-a
+               repository: dsjena/yq-c
                token: ${{ secrets.SUPER_SECRET }}
                path: yq-c
            - name: S A
