@@ -2,50 +2,50 @@ name: D
 
 on:
 repository_dispatch:
-\ttypes: {i}
+	types: {i}
 
 jobs:
 sj:
-\truns-on: ubuntu-latest
-\tsteps:
-\t- name: C A
-\t\tuses: actions/checkout@v2
-\t\twith:
-\t\tpath: main
-\t- name: C M A
-\t\trun: |
-\t\tcd ./main/
-\t\tls ${GITHUB_WORKSPACE}
-\t\techo ${GITHUB_WORKSPACE}
-\t\tpwd
-\t\techo "main is done..."
+	runs-on: ubuntu-latest
+	steps:
+	- name: C A
+		uses: actions/checkout@v2
+		with:
+		path: main
+	- name: C M A
+		run: |
+		cd ./main/
+		ls ${GITHUB_WORKSPACE}
+		echo ${GITHUB_WORKSPACE}
+		pwd
+		echo "main is done..."
 
-\t- name: yq-j
-\t\tuses: actions/checkout@v2
-\t\twith:
-\t\trepository: dsjena/yq-a
-\t\ttoken: ${{ secrets.SUPER_SECRET }}
-\t\tpath: yq-j
-\t- name: S A
-\t\tuses: actions/setup-python@v2
-\t\twith:
-\t\tpython-version: '3.8'
-\t- name: I D A
-\t\trun: |
-\t\tcd ./yq-j/
-\t\tpython -m pip install --upgrade pip
-\t\tpip install -r requirements.txt
-\t- name: AC A
-\t\trun: |
-\t\tcd ./yq-j/
-\t\tdtt=Sun Jan 16 18:16:49 IST 2022
-\t\techo ${GITHUB_WORKSPACE}
-\t\techo "${dtt}" 
-\t\techo "${dtt}" >> recieved.md
-\t\tbash make-rdme.sh >> log.txt 2>&1
-\t\tsh all-run-group.sh 
-\t\tgit config --local user.email "action@github.com"
-\t\tgit config --local user.name "GitHub Action"
-\t\tgit add .
-\t\tgit diff-index --quiet HEAD || git commit -m "Load YH" -a
-\t\tgit push
+	- name: yq-j
+		uses: actions/checkout@v2
+		with:
+		repository: dsjena/yq-a
+		token: ${{ secrets.SUPER_SECRET }}
+		path: yq-j
+	- name: S A
+		uses: actions/setup-python@v2
+		with:
+		python-version: '3.8'
+	- name: I D A
+		run: |
+		cd ./yq-j/
+		python -m pip install --upgrade pip
+		pip install -r requirements.txt
+	- name: AC A
+		run: |
+		cd ./yq-j/
+		dtt=Sun Jan 16 18:21:00 IST 2022
+		echo ${GITHUB_WORKSPACE}
+		echo "${dtt}" 
+		echo "${dtt}" >> recieved.md
+		bash make-rdme.sh >> log.txt 2>&1
+		sh all-run-group.sh 
+		git config --local user.email "action@github.com"
+		git config --local user.name "GitHub Action"
+		git add .
+		git diff-index --quiet HEAD || git commit -m "Load YH" -a
+		git push
